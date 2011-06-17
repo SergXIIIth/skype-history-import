@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/skype-history-import.rb",
+    "skype-history-import.gemspec",
     "test/helper.rb",
     "test/test_skype-history-import.rb"
   ]
