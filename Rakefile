@@ -51,3 +51,8 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+task :done do
+	sh 'git add .'
+	sh 'git commit -a -m \"#{ENV['m']}\"'
+end
