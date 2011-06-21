@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'helper'
+require 'date'
 
 class TestSkypeHistoryImport < Test::Unit::TestCase
 	context "a importer" do
@@ -14,11 +15,10 @@ class TestSkypeHistoryImport < Test::Unit::TestCase
 			assert_equal(2, result.count, "Two message should be")
 			
 			di = result[0]
-			sam = result[1]
 			
 			assert_equal("Di", di.nick)
-			assert_equal("14/06/2011 09:25:15", di.date)
-			assert_equal("a deal? are you trading something?", di.message)
+			assert_equal(DateTime.new(2011,06,14, 9,25,15), di.date)
+			assert_equal("a deal? are you trading something?", di.text)
 		end
 
 =begin

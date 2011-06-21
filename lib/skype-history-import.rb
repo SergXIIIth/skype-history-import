@@ -1,22 +1,24 @@
 def import(text)
 	result = []
 	
-	puts text
-	
-	regex = Regexp.new(/^(\[.*)$/i)
+	regex = Regexp.new(/^\[(.*)\] (.*): (.*)/)
 
-	matchdata = regex.match(text)
-	while matchdata != nil
-		puts "matchdata=#{matchdata[1]}"
+	message_raw = regex.match(text)
+	while message_raw != nil
 		
-		result.push(Message.new)
+		message = Message.new
+		message.date = DateTime.strptime(message_raw[1], "%d/%m/%Y %H:%M:%S");
+		message.nick = message_raw[2];
+		message.text = message_raw[3];
 		
-		matchdata = regex.match(matchdata.post_match)
+		result.push(message)
+		
+		message_raw = regex.match(message_raw.post_match)
 	end
 
 	result
 end
 
 class Message
-	attr_accessor :date, :nick, :message
+	attr_accessor :date, :nick, :text
 end
