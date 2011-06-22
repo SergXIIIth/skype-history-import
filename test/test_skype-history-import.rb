@@ -34,14 +34,7 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 
 			assert_equal(2, result.count, "Two message should be")
 			message = result[0]
-			p "message.text = " + message.text
-			p "message.text.size = " + message.text.size.to_s
-			assert(400 < message.text.size, "Long text of massage")
-		end
-		
-		should "double line" do
-			assert("\n\n" =~ /(.*)/)
-			p "============ " + $1
+			assert_equal(452, message.text.size, "message too short")
 		end
 
 =begin

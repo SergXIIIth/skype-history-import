@@ -4,9 +4,10 @@ def import(text)
 	message = Message.new
 	
 	while text.strip.size > 0
-		if text =~ /^\[(.*)\] (.*): (.*)$/
+		if text =~ /^\[(.*)\] (.*): (.*)/
+
 			# handle tail of prev multi line message
-			unless $` == nil or message.text == nil
+			unless $` == nil or message.text == nil or $`.strip == ""
 				message.text += $`
 			end
 			
@@ -19,8 +20,6 @@ def import(text)
 			result.push(message)
 		end
 		
-		p " --- "
-		p text
 		
 		text = $'
 	end
