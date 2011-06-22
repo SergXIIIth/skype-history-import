@@ -1,9 +1,15 @@
 def import(text)
 	result = []
 	
+	message = Message.new
+	
 	while text.strip.size > 0
-		
 		if text =~ /^\[(.*)\] (.*): (.*)/
+			# handle tail of prev multi line message
+			unless $` == nil or message.text == nil
+				message.text += $`
+			end
+			
 			# message start
 			message = Message.new
 			message.date = DateTime.strptime($1, "%d/%m/%Y %H:%M:%S")
@@ -11,10 +17,6 @@ def import(text)
 			message.text = $3
 			
 			result.push(message)
-		else
-			# multi line message 
-			text =~ /(.*)/
-			message.text += $1
 		end
 		
 		p " --- "

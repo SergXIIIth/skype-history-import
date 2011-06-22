@@ -38,6 +38,11 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 			p "message.text.size = " + message.text.size.to_s
 			assert(400 < message.text.size, "Long text of massage")
 		end
+		
+		should "double line" do
+			assert("\n\n" =~ /(.*)/)
+			p "============ " + $1
+		end
 
 =begin
 [[20/06/2011 18:37:28] *** Call to Echo / Sound Test Service, duration 00:44. ***
