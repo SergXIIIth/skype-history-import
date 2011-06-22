@@ -1,19 +1,26 @@
 def import(text)
 	result = []
 	
-	regex = Regexp.new(/^\[(.*)\] (.*): (.*)/)
-
-	message_raw = regex.match(text)
-	while message_raw != nil
+	while text.strip.size > 0
 		
-		message = Message.new
-		message.date = DateTime.strptime(message_raw[1], "%d/%m/%Y %H:%M:%S");
-		message.nick = message_raw[2];
-		message.text = message_raw[3];
+		if text =~ /^\[(.*)\] (.*): (.*)/
+			# message start
+			message = Message.new
+			message.date = DateTime.strptime($1, "%d/%m/%Y %H:%M:%S")
+			message.nick = $2
+			message.text = $3
+			
+			result.push(message)
+		else
+			# multi line message 
+			text =~ /(.*)/
+			message.text += $1
+		end
 		
-		result.push(message)
+		p " --- "
+		p text
 		
-		message_raw = regex.match(message_raw.post_match)
+		text = $'
 	end
 
 	result
