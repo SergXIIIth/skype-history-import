@@ -60,7 +60,7 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 		end
 		
 		should "import real chat" do
-			file = File.open("/home/msa/real_skypy_chat.txt", "rb")
+			file = File.open("/home/msa/real_skype_chat.txt", "rb")
 			messages = file.read			
 			result = import(messages)
 			p "so real messages count is #{result.size}"

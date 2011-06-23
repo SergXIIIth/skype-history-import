@@ -1,6 +1,20 @@
 = skype-history-import
 
-Description goes here.
+Open Skype -> Throught context menu Select all message -> Put them in file or string -> run function 'import'
+
+How to use, example
+
+	require 'rubygems'
+	require 'skype-history-import'
+	
+	file = File.open("/home/msa/real_skype_chat.txt", "rb")
+	messages = file.read			
+	
+	result = import(messages)
+	
+	p "so real messages count is #{result.size}"
+	p "first message #{result[0].inspect}"
+
 
 == Contributing to skype-history-import
  

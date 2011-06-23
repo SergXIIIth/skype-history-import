@@ -1,3 +1,5 @@
+require 'date'
+
 def import(text)
 	result = []
 	
