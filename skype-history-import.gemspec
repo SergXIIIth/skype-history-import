@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["SergXIIIth"]
   s.date = %q{2011-06-23}
-  s.description = %q{Skype history import to JSON}
+  s.description = %q{Manualy user copy chat history to file or string and after gem import(parse) it to class Message}
   s.email = %q{smkrbr@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Skype history import to JSON}
+  s.summary = %q{Skype history import}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
