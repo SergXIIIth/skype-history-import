@@ -37,32 +37,45 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 			assert_equal(452, message.text.size, "message too short")
 		end
 
-=begin
-[[20/06/2011 18:37:28] *** Call to Echo / Sound Test Service, duration 00:44. ***
-
-		should "today messages" do
-			messages = <<-message
-[16:57:04] sam: ок, я Юре в понедельник тогда подвезу ноут или в воскресенье, если он работает
-[16:58:39] Elenka: ок договрились!
-			message
-			
-			result = import(message)
-		end
-	
 		should "edited message" do
 			messages = <<-message
 [14/06/2011 09:28:45 | Edited 09:29:02] sam: not yet, just personal staff
 			message
 			
-			result = import(message)
+			result = import(messages)[0]
+			
+			assert_equal("sam", result.nick)
+			assert_equal(DateTime.new(2011,06,14, 9,28,45), result.date)
 		end
 
 		should "deleted message" do
 			messages = <<-message
+[22/06/2011 16:26:57 | Removed 11:49:30] sam: This message has been removed.
 			message
 			
-			result = import(message)
+			result = import(messages)[0]
+			
+			assert_equal("sam", result.nick)
+			assert_equal(DateTime.new(2011,06,22, 16,26,57), result.date)
 		end
+		
+		should "import real chat" do
+			file = File.open("/home/msa/real_skypy_chat.txt", "rb")
+			messages = file.read			
+			result = import(messages)
+			p "so real messages count is #{result.size}"
+		end
+		
+=begin
+file send
+[08/12/2010 17:01:46] *** sam sent ps.js ***
+
+call
+[20/06/2011 18:37:28] *** Call to Echo / Sound Test Service, duration 00:44. ***
+
+today
+[16:57:04] sam: ок, я Юре в понедельник тогда подвезу ноут или в воскресенье, если он работает
+
 =end
 	end
 end

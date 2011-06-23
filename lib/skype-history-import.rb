@@ -13,9 +13,15 @@ def import(text)
 			
 			# message start
 			message = Message.new
-			message.date = DateTime.strptime($1, "%d/%m/%Y %H:%M:%S")
-			message.nick = $2
-			message.text = $3
+			
+			begin
+				message.date = DateTime.strptime($1, "%d/%m/%Y %H:%M:%S")
+				message.nick = $2
+				message.text = $3
+			rescue
+				puts "Exception '#{$!}' on match *** #{$~} ***"
+				raise
+			end
 			
 			result.push(message)
 		end
