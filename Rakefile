@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "skype-history-import"
   gem.homepage = "http://github.com/SergXIIIth/skype-history-import"
   gem.license = "MIT"
-  gem.summary = %Q{Skype history import to JSON}
-  gem.description = %Q{Skype history import to JSON}
+  gem.summary = %Q{Skype history import}
+  gem.description = %Q{Manualy user copy chat history to file or string and after gem import(parse) it to class Message}
   gem.email = "smkrbr@gmail.com"
   gem.authors = ["SergXIIIth"]
   # dependencies defined in Gemfile
