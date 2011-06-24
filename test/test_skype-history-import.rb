@@ -59,11 +59,39 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 			assert_equal(DateTime.new(2011,06,22, 16,26,57), result.date)
 		end
 		
-		should "import real chat" do
-			file = File.open("/home/msa/real_skype_chat.txt", "rb")
-			messages = file.read			
+		should "message with only time go to prev message" do
+			messages = <<-message
+[22/06/2011 16:26:57] sam: This message has been removed.
+[16:26:57] mtv: Boby of prev message.
+			message
+			
 			result = import(messages)
-			p "so real messages count is #{result.size}"
+			
+			assert_equal(1, result.size, "should be one message")
+			
+			result = result[0]
+			
+			assert_equal("sam", result.nick)
+			assert_equal(DateTime.new(2011,06,22, 16,26,57), result.date)
+			assert(result.text =~ /\[16:26:57\] mtv/, "message text have second line")
+		end
+
+		should "import real chat" do
+			#return
+			pattern = "#{Dir.home}/skype_history/*.txt"
+			
+			Dir[pattern].each do |file_path|
+				p ""
+				p "Importing #{file_path} ... " 
+				
+				file = File.open(file_path, "rb")
+				messages = file.read
+				file.close
+				
+				result = import(messages)
+				
+				p "ok. Messages count is #{result.size}"
+			end
 		end
 		
 =begin
