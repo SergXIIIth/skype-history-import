@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{skype-history-import}
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["SergXIIIth"]
-  s.date = %q{2011-06-23}
+  s.date = %q{2011-06-24}
   s.description = %q{Manualy user copy chat history to file or string and after gem import(parse) it to class Message}
   s.email = %q{smkrbr@gmail.com}
   s.extra_rdoc_files = [
