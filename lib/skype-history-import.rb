@@ -6,7 +6,7 @@ def import(text)
 	message = Message.new
 	
 	while text.strip.size > 0
-		if text =~ /^\[(.*)\] (.*): (.*)/
+		if text =~ /^\[(.+)\] (.+?): (.*)/
 			
 			# handle tail of prev multi line message
 			unless $` == nil or message.text == nil or $`.strip == ""

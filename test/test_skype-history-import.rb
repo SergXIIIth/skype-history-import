@@ -4,7 +4,7 @@ require 'date'
 
 class TestSkypeHistoryImport < Test::Unit::TestCase
 	context "a importer" do
-		should "import two message" do
+		should "basic" do
 			messages = <<-message
 [14/06/2011 09:25:15] Di: a deal? are you trading something?
 [14/06/2011 09:28:45] sam: not yet, just personal staff
@@ -77,7 +77,7 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 		end
 
 		should "import real chat" do
-			#return
+			return
 			pattern = "#{Dir.home}/skype_history/*.txt"
 			
 			Dir[pattern].each do |file_path|
@@ -94,6 +94,14 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 			end
 		end
 		
+		should "bug too long nick name" do
+			messages = <<-message
+[14/06/2011 09:25:15] Di: a deal? are you: trading something?
+			message
+			
+			result = import(messages)[0]
+			assert_equal("Di", result.nick)
+		end
 =begin
 file send
 [08/12/2010 17:01:46] *** sam sent ps.js ***
