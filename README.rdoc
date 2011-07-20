@@ -4,7 +4,7 @@ Open Skype -> Throught context menu Select all message -> Put them in file or st
 
 How to use, example
 
-```ruby
+``` ruby
 	require 'rubygems'
 	require 'skype-history-import'
 	
