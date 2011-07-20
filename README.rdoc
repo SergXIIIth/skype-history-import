@@ -4,7 +4,7 @@ Open Skype -> Throught context menu Select all message -> Put them in file or st
 
 How to use, example
 
---- ruby
+``` ruby
 	require 'rubygems'
 	require 'skype-history-import'
 	
@@ -15,7 +15,7 @@ How to use, example
 	
 	p "so real messages count is #{result.size}"
 	p "first message #{result[0].inspect}"
----
+```
 
 == Contributing to skype-history-import
  
