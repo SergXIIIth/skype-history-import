@@ -57,3 +57,8 @@ task :done do
 	sh "git commit -a -m \"#{ENV['m']}\""
 	sh 'git push'
 end
+
+task :up do
+	sh 'git pull origin master'
+end
+

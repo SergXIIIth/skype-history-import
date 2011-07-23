@@ -1,4 +1,5 @@
 require 'date'
+require 'stringex'
 
 def import(text)
 	result = []
@@ -43,4 +44,10 @@ end
 
 class Message
 	attr_accessor :date, :nick, :text
+	
+	# make email from nick, like nick@skype.com
+	def email
+		@email = nick.to_url.gsub(/\W/,'')
+		@email = "#{@email}@skype.com"
+	end
 end

@@ -17,6 +17,7 @@ class TestSkypeHistoryImport < Test::Unit::TestCase
 			di = result[0]
 			
 			assert_equal("Di", di.nick)
+			assert_equal("di@skype.com", di.email)
 			assert_equal(DateTime.new(2011,06,14, 9,25,15), di.date)
 			assert_equal("a deal? are you trading something?", di.text)
 		end
