@@ -103,6 +103,19 @@ Exception#to_s was found to be problematic around it. The method can trick safe 
 			result = import(messages)[0]
 			assert_equal("Di", result.nick)
 		end
+
+		should "email maping" do
+			messages = <<-message
+[14/06/2011 09:25:15] Di: a deal? are you: trading something?
+			message
+			
+			importer = SkypeHistoryImport::Importer.new
+			
+			importer.nike_to_email_map "Di", "Di@mail.com"
+			
+			result = importer.run(messages)[0]
+			assert_equal("Di@mail.com", result.email)
+		end
 =begin
 file send
 [08/12/2010 17:01:46] *** sam sent ps.js ***
