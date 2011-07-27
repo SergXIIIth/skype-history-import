@@ -1,8 +1,14 @@
-# skype-history-import
+# Installation
+
+```ruby
+gem install skype-history-import
+```
+ 
+# How to use skype-history-import
 
 Open Skype -> Throught context menu Select all message -> Put them in file or string -> run function 'import'
 
-How to use, example
+Example
 
 ``` ruby
 	require 'rubygems'
