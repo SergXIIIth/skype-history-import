@@ -55,7 +55,7 @@ end
 task :done do
 	sh 'git add .'
 	sh "git commit -a -m \"#{ENV['m']}\""
-	sh 'git push'
+	sh 'git push origin master'
 end
 
 task :up do
