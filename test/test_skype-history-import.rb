@@ -3,6 +3,8 @@ require 'helper'
 require 'date'
 
 class TestSkypeHistoryImport < Test::Unit::TestCase
+	include SkypeHistoryImport
+	
 	context "a importer" do
 		should "basic" do
 			messages = <<-message

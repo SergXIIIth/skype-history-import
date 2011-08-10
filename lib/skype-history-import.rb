@@ -73,12 +73,9 @@ module SkypeHistoryImport
 			@email = value
 		end
 	end
-end
 
-def import(text)
-	importer = SkypeHistoryImport::Importer.new
-	importer.run(text)
-end
-
-class Message < SkypeHistoryImport::Message
+	def import(text)
+		importer = SkypeHistoryImport::Importer.new
+		importer.run(text)
+	end
 end
