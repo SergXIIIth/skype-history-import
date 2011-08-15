@@ -11,16 +11,17 @@ Open Skype -> Throught context menu Select all message -> Put them in file or st
 Example
 
 ``` ruby
-	require 'rubygems'
-	require 'skype-history-import'
+require 'rubygems'
+require 'skype-history-import'
+include SkypeHistoryImport
 	
-	file = File.open("/home/msa/real_skype_chat.txt", "rb")
-	messages = file.read			
+file = File.open("/home/msa/real_skype_chat.txt", "rb")
+messages = file.read			
 	
-	result = import(messages)
+result = import(messages)
 	
-	p "so real messages count is #{result.size}"
-	p "first message #{result[0].inspect}"
+p "so real messages count is #{result.size}"
+p "first message #{result[0].inspect}"
 ```
 
 ## Contributing to skype-history-import
